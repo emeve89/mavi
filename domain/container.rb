@@ -14,6 +14,10 @@ module Domain
       Adapters::Presenters::SearchPresenter.new
     end
 
+    register 'elastic_search.search' do
+      Adapters::Gateways::ElasticSearch::Search.new
+    end
+
     register 'search_interactor' do
       Domain::Interactors::Search.new
     end
