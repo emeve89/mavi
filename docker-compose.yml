@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.2
+    container_name: elasticsearch
+    environment:
+      - cluster.name=elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+  mavi:
+    build: .
+    container_name: mavi
+    image: mavi:latest
+    ports:
+      - 9292:9292
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - REPO_PATH=<git repo path>
+      - GIT_USER=<git repo user>
+      - GIT_PASSWORD=<git repo password>
+
+volumes:
+  elasticsearch_data:
+    driver: local
