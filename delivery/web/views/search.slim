@@ -1,0 +1,16 @@
+h2 Search for DXL plugins
+form#search-form
+  label for="q" Search keyword
+  input#q maxlength="30" name="q" type="text" /
+  button type="submit" Search
+
+table
+  tr
+    th File Name
+    th File Path
+  - locals[:view_model].each do |model|
+    tr
+      td = model[:file_name]
+      td = model[:file_path]
+  
+    
