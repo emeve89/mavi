@@ -3,7 +3,7 @@ module Adapters
     module ElasticSearch
       # Implementation of a search function usign ElasticSearch
       class Search
-        def call(params)
+        def call(_params)
           [
             { id: 1, file_name: 'name1', file_path: 'path1' },
             { id: 2, file_name: 'name2', file_path: 'path2' }

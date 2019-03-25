@@ -18,7 +18,7 @@ module Delivery
         # GET /search branch
         r.get 'search' do
           view_model = search_controller.call(r.params)
-          view 'search', locals: {view_model: view_model}
+          view 'search', locals: { view_model: view_model }
         end
       end
     end

@@ -2,6 +2,8 @@ require_relative '../../domain/domain'
 
 module Adapters
   module Controllers
+    # Adapter class that receives a request from the routing system
+    # and creates a request model that is passed to the interactor
     class SearchController
       include Import['search_interactor']
 
