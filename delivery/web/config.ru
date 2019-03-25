@@ -1,5 +1,4 @@
 require 'roda'
-require_relative '../../adapters/adapters'
 require_relative '../../domain/container'
 
 module Delivery

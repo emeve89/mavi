@@ -1,8 +1,8 @@
 module Domain
-  module Interactors
+  module Search
     # Class that is responsible for performing
     # a search action on a injected search engine.
-    class Search
+    class Interactor
       include Import['elastic_search.search', 'search_presenter']
 
       def call(request_model)

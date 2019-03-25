@@ -19,9 +19,14 @@ module Domain
     end
 
     register 'search_interactor' do
-      Domain::Interactors::Search.new
+      Domain::Search::Interactor.new
     end
   end
 end
 
 Import = Dry::AutoInject(Domain::Container)
+
+require_relative '../adapters/controllers/search_controller'
+require_relative '../adapters/presenters/search_presenter'
+require_relative '../adapters/gateways/elastic_search/search'
+require_relative '../domain/search/interactor'
