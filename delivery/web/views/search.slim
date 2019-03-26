@@ -4,13 +4,12 @@ form#search-form
   input#q maxlength="30" name="q" type="text" /
   button type="submit" Search
 
-table
-  tr
-    th File Name
-    th File Path
-  - locals[:view_model].each do |model|
+- unless locals[:view_model].empty?
+  table
     tr
-      td = model[:file_name]
-      td = model[:file_path]
-  
-    
+      th File Name
+      th File Path
+    - locals[:view_model].each do |model|
+      tr
+        td = model[:file_name]
+        td = model[:file_path]    
