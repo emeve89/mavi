@@ -1,4 +1,5 @@
 require_relative '../container'
+require_relative 'response_model'
 
 module Domain
   module Index
@@ -9,16 +10,27 @@ module Domain
 
       def call
         update_repo.call
-        Dir.glob("#{ENV['REPO_PATH']}/**/*.dxl").each do |file|
+        files_to_index.each do |file|
           id = Digest::SHA1.hexdigest(file)
-          body = {
-            file_path: File.expand_path(file),
-            # lines = File.foreach(file).map(&:strip),
-            tags: ['TAG1'],
-            file_name: File.basename(file, '.*')
-          }
+          body = data_to_index_for(file)
           index.call(id, body)
         end
+        Domain::Index::ResponseModel.new(succeded: true)
+      end
+
+      private
+
+      def files_to_index
+        @files_to_index ||= Dir.glob("#{ENV['REPO_PATH']}/**/*.dxl")
+      end
+
+      def data_to_index_for(file)
+        {
+          file_path: File.expand_path(file),
+          # lines = File.foreach(file).map(&:strip),
+          tags: ['TAG1'],
+          file_name: File.basename(file, '.*')
+        }
       end
     end
   end
