@@ -5,7 +5,7 @@ module Domain
     # Class that is responsible for performing
     # a search action on a injected search engine.
     class Interactor
-      include Import['elastic_search.search', 'search_presenter']
+      include Import['search_engine.search', 'search_presenter']
 
       def call(request_model)
         response_model = Domain::Search::ResponseModel.new(

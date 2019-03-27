@@ -22,7 +22,7 @@ services:
     ports:
       - 9292:9292
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=http://elasticsearch:9200 # Path where the repo will be cloned.
       - REPO_PATH=<git repo path>
       - GIT_USER=<git repo user>
       - GIT_PASSWORD=<git repo password>

@@ -10,9 +10,9 @@ module Adapters
 
       def call(request)
         request_model = Domain::Search::RequestModel.new(
-          q: request.fetch(:q, ''),
-          from: request.fetch(:from, 0),
-          size: request.fetch(:size, 10)
+          q: request.fetch('q', ''),
+          from: request.fetch('from', 0),
+          size: request.fetch('size', 10)
         )
         search_interactor.call(request_model)
       end

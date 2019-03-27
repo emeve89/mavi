@@ -4,6 +4,9 @@ form#search-form
   input#q maxlength="30" name="q" type="text" /
   button type="submit" Search
 
+form#index-form action="/reindex" method="post"
+  button type="submit" Refresh Index
+
 - unless locals[:view_model].empty?
   table
     tr
