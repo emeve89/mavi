@@ -1,0 +1,30 @@
+{
+  "index": "mavi",
+  "body": {
+    "settings": {
+      "analysis": {
+        "analyzer": {
+          "ngram": {
+            "tokenizer": "whitespace",
+            "filter": ["lowercase", "stop", "ngram"],
+            "type": "custom"
+          },
+          "ngram_search": {
+            "tokenizer": "whitespace",
+            "filter": ["lowercase", "stop"],
+            "type": "custom"
+          }
+        }
+      }
+    },
+    "mappings": {
+      "scripts": {
+        "properties": {
+          "file_name": { "type": "text", "analyzer": "snowball" },
+          "file_path": { "type": "text", "analyzer": "snowball" },
+          "tags": { "type": "text", "analyzer": "snowball" }
+        }
+      }
+    }
+  }
+}

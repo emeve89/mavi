@@ -6,7 +6,11 @@ module Domain
     # Class that collects data from the files and
     # the update the searche engine index
     class Interactor
-      include Import['vcs.update_repo', 'search_engine.index', 'index_presenter']
+      include Import[
+        'vcs.update_repo',
+        'search_engine.index',
+        'index_presenter'
+      ]
 
       def call
         update_repo.call

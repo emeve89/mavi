@@ -24,7 +24,12 @@ module Adapters
         def formatted_body_for(data)
           data.map do |file_info|
             {
-              index: { _index: 'mavi', _type: 'scripts', _id: id_for(file_info[:file_path]), data: file_info }
+              index: {
+                _index: 'mavi',
+                _type: 'scripts',
+                _id: id_for(file_info[:file_path]),
+                data: file_info
+              }
             }
           end
         end

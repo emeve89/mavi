@@ -21,4 +21,3 @@ module Adapters
     end
   end
 end
-  
