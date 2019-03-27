@@ -6,7 +6,7 @@ module Domain
     # Class that collects data from the files and
     # the update the searche engine index
     class Interactor
-      include Import['vcs.update_repo', 'search_engine.index']
+      include Import['vcs.update_repo', 'search_engine.index', 'index_presenter']
 
       def call
         update_repo.call
@@ -15,7 +15,7 @@ module Domain
           body = data_to_index_for(file)
           index.call(id, body)
         end
-        Domain::Index::ResponseModel.new(succeded: true)
+        index_presenter.call(Domain::Index::ResponseModel.new(succeded: true))
       end
 
       private

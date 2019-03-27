@@ -26,7 +26,7 @@ module Delivery
         # POST /reindex branch
         r.post 'reindex' do
           view_model = index_controller.call
-          flash['reindex'] = view_model.message
+          flash['reindex'] = view_model[:message]
           r.redirect '/search'
         end
       end

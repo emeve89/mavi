@@ -18,6 +18,10 @@ module Domain
       Adapters::Presenters::SearchPresenter.new
     end
 
+    register 'index_presenter' do
+      Adapters::Presenters::IndexPresenter.new
+    end
+
     register 'search_engine.search' do
       Adapters::Gateways::ElasticSearch::Search.new
     end
@@ -45,6 +49,7 @@ Import = Dry::AutoInject(Domain::Container)
 require_relative '../adapters/controllers/search_controller'
 require_relative '../adapters/controllers/index_controller'
 require_relative '../adapters/presenters/search_presenter'
+require_relative '../adapters/presenters/index_presenter'
 require_relative '../adapters/gateways/elastic_search/search'
 require_relative '../adapters/gateways/elastic_search/index'
 require_relative '../adapters/gateways/git/update_repo'
