@@ -10,11 +10,8 @@ module Domain
 
       def call
         update_repo.call
-        files_to_index.each do |file|
-          id = Digest::SHA1.hexdigest(file)
-          body = data_to_index_for(file)
-          index.call(id, body)
-        end
+        data = files_to_index.map { |file| data_to_index_for(file) }
+        index.call(data)
         index_presenter.call(Domain::Index::ResponseModel.new(succeded: true))
       end
 
@@ -27,7 +24,6 @@ module Domain
       def data_to_index_for(file)
         {
           file_path: File.expand_path(file),
-          # lines = File.foreach(file).map(&:strip),
           tags: ['TAG1'],
           file_name: File.basename(file, '.*')
         }
