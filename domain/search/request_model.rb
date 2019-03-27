@@ -7,8 +7,8 @@ module Domain
     # and then passed to the interactor
     class RequestModel < Dry::Struct
       attribute :q, Dry::Types['string']
-      attribute :from, Dry::Types['integer']
-      attribute :size, Dry::Types['integer']
+      attribute :from, Dry::Types['coercible.integer']
+      attribute :size, Dry::Types['coercible.integer']
     end
   end
 end
