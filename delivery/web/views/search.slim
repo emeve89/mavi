@@ -7,7 +7,7 @@ form#search-form
 form#index-form action="/reindex" method="post"
   button type="submit" Refresh Index
 
-- unless locals[:view_model].nil?
+- unless locals[:view_model].empty?
   table
     tr
       th File Name
